@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block content %}
+<html lang="en">
+
+<h1>Detail</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{detailsItem.product_image.url}}" alt="" class="img-fluid">
+        </div>
+        <div class="col">
+            <h2>{{detailsItem.product_title}}</h2>
+            <p>{{detailsItem.product_description}}</p>
+            <p>{{detailsItem.product_price}}</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

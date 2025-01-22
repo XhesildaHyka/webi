@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- fotoja ne fillim -->
+    <header class="position-relative w-100">
+        <div class="card text-bg-dark">
+            <img src="{% static 'image/foto3.jpg' %}" class="card-img" alt="..." style="height: 50vh; object-fit: cover;">
+            <div class="card-img-overlay d-flex align-items-end">
+                <h6 class="card-title p-2">Për çdo pyetje mund të na kontaktoni në platformat e dhëna ose në
+                    hapësirën e rezevevuar më poshtë.</h6>
+            </div>
+        </div>
+    </header>
+    
+    <!-- nis navbar -->
+    <nav class="navbar navbar-expand-lg  position-absolute  top-0 w-100">
+        <div class="container-fluid">
+          <div>
+            <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'image/logo.png '%}" alt="logo"
+                style="width:80px;height: 80px;"></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item                       ">
+                <a class=" nav-link text-white " aria-current="page" href="{% url 'homepage' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'aboutpage' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-primary " href="{% url 'contactpage' %}">Contact</a>
+              </li>
+           
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary"  type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- fund navbar -->
+
+    <!-- contaktet n mes -->
+    <main>
+        <section class="container my-5">
+            <div class="row">
+                <div class="col">
+                    <p><a href="" class="custom-border"><i class="fa-brands fa-instagram"></i>Instagram</a></p>
+                    <p><a href="" class="custom-border"><i class="fa-brands fa-facebook"></i> Facebook</a></p>
+                    <p><a href="" class="custom-border"><i class="fa-solid fa-phone"></i> Phone</a></p>
+                    <p><a href="" class="custom-border"><i class="fa-brands fa-tiktok"></i> Tiktok</a></p>
+                    <p><a href="" class="custom-border"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></p>
+                </div>
+                <div class="col">
+
+                    <form class="row g-3 needs-validation" novalidate method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Emri:</label>
+                            <input type="text" class="form-control" id="validationCustom01" value="" name="emri" required>
+                        
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Mbiemri:</label>
+                            <input type="text" class="form-control" id="validationCustom02" value="" name="lastname" required>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" name="email"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Shënimi juaj:</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="sms"></textarea>
+                        </div>
+
+
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Dërgo</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- hartat -->
+    <main class="container my-5">
+        <h2 class="mb-4">ADRESAT TONA:</h2>
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188.9728334368218!2d19.556806127211445!3d40.727584256182716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1345539971452f97%3A0x8dfc00ef6857ef3a!2sFirma%20Hyka!5e0!3m2!1sen!2s!4v1734361261144!5m2!1sen!2s"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-md-4">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.8243160277503!2d19.697554028875096!3d40.733484053305254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135aaf12c15d7633%3A0x79aa7839094a630a!2sFirma%20Hyka!5e0!3m2!1sen!2sus!4v1735928264996!5m2!1sen!2sus"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-md-4">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.8243160277503!2d19.697554028875096!3d40.733484053305254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135aaf12c15d7633%3A0x79aa7839094a630a!2sFirma%20Hyka!5e0!3m2!1sen!2sus!4v1735928264996!5m2!1sen!2sus"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </main>
+    
+  
+
+{% endblock %}

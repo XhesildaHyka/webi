@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+{% endblock %}
+{% block content %}
+
+
+<body>
+  <header class="position-relative w-100">
+    <!-- nis carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+
+      <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-center">
+              <img src="{% static 'image/IMG-20250102-WA0028.jpg' %}" class="d-block w-100" alt="Photo 1">
+              <img src="{% static 'image/IMG-20250102-WA0030.jpg' %}" class="d-block w-100" alt="Photo 2">
+              <img src="{% static 'image/IMG-20250102-WA0029.jpg' %}" class="d-block w-100" alt="Photo 3">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <img src="{% static 'image/IMG-20250102-WA0031.jpg' %}" class="d-block w-100" alt="Photo 4">
+              <img src="{% static 'image/IMG-20250102-WA0033.jpg' %}" class="d-block w-100" alt="Photo 5">
+              <img src="{% static 'image/IMG-20250102-WA0032.jpg' %}" class="d-block w-100" alt="Photo 6">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <img src="{% static 'image/IMG-20250102-WA0034.jpg' %}" class="d-block w-100" alt="Photo 7">
+              <img src="{% static 'image/IMG-20250102-WA0035.jpg' %}" class="d-block w-100" alt="Photo 8">
+              <img src="{% static 'image/IMG-20250102-WA0036.jpg' %}" class="d-block w-100" alt="Photo 9">
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous Control -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <!-- Next Control -->
+        <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+      <!-- fund carousel -->
+         <!-- nis navbar -->
+    <nav class="navbar navbar-expand-lg  position-absolute  top-0 w-100">
+      <div class="container-fluid">
+        <div>
+          <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'image/logo.png '%}" alt="logo"
+              style="width:80px;height: 80px;"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item                       ">
+              <a class=" btn btn-primary " aria-current="page" href="{% url 'homepage' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'aboutpage' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contactpage' %}">Contact</a>
+            </li>
+         
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary"  type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- fund navbar -->
+
+
+
+  </header>
+
+  <!-- Kategoritë-->
+  <main> 
+    <section class="container my-5">
+      <h1>Kategoritë: </h1>
+      <div class="row">
+{% for category in categorys %}
+        <div class="col-12 col-md-2 col-lg-4 d-flex">
+          <div class="card flex-fill">
+            <img src="{{category.category_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{category.category_title}}</h5>
+              <a href="{% url 'kategoripage' category.pk %}" class="ngjyra btn mt-auto">SHIKO KËTU</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </section>
+  </main> 
+  <!-- fundi Kategoritë -->
+
+  <!-- Produktet-->
+   <main>
+    <section class="container my-5">
+      <h1 >Produktet:</h1>
+      <div class="row">
+{% for item in items %}
+        <div class="col-12 col-md-2 col-lg-6 d-flex">
+          <div class="card flex-fill">
+            <img src="{{item.item_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{item.item_title}}</h5>
+              <a href="{% url 'itempage' item.pk %}" class="ngjyra btn mt-auto">SHIKO KËTU</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </section>
+   </main>
+  <!-- FUNDI-Produktet -->
+
+  
+  <!-- NEW ARRIVALS -->
+  <main>
+    <section class="container my-5">
+      <h1>Më të rejat:</h1>
+      <div class="row">
+        <!-- NEW ARRIVALS COLUMN -->
+        <div class="col-12 col-md-2 col-lg-3 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body d-flex flex-column text-center ">
+              <h1 id="newarrivals">NEW ARRIVALS</h1>
+              <h1 id="look">
+                <a href="#">TAKE A LOOK</a>
+              </h1>
+            </div>
+          </div>
+        </div>
+  
+        {% for arrival in arrivals %}
+        <div class="col-12 col-md-2 col-lg-3 d-flex">
+          <div class="card flex-fill">
+            <img src="{{arrival.arrival_image.url}}" class="card-img-top" alt="{{arrival.arrival_title}}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{arrival.arrival_title}}</h5>
+              <a href="{% url 'detailspage' arrival.pk %}" class="ngjyra btn mt-auto">POROSIT KËTU</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+  
+
+
+
+{% endblock %}
+

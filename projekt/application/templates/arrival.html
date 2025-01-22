@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block content %}
+<html lang="en">
+
+
+<h1>Të reja:</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{arrivals.product_image.url}}" alt="" class="img-fluid">
+        </div>
+        <div class="col">
+            <h2>{{items.product_title}}</h2>
+            <p>{{items.product_description}}</p>
+            <p>{{items.product_price}}</p>
+        </div>
+    </div>
+
+
+{% endblock %}
