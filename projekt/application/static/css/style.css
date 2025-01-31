@@ -9,6 +9,7 @@ body {
     line-height: 1.5;
     font-size: 1em;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
 }
 
 .navbar-brand img {
@@ -17,10 +18,17 @@ body {
 }
 
 
+.carousel{
+  width: 100%;
+  overflow: hidden;
+}
+
 .carousel-inner,.carousel-inner img{
     height: 100vh;
     object-fit: cover;
     width: 100%;
+    display: flex;
+    transition: transform 0.2s ease-in-out;
 }
 
 section h1{

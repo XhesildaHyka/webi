@@ -8,7 +8,7 @@ urlpatterns = [
     path("kategori/<int:id>", views.kategori, name="kategoripage"),
     path("item/<int:id>", views.item, name="itempage"),
     path("arrival/<int:id>", views.arrival, name="arrivalpage"),
-    
+    path('search/', views.search, name='search'),
 
 
 ]

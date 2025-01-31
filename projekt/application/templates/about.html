@@ -8,35 +8,37 @@
 
 <style>
   .position-relative {
-      position: relative;
+    position: relative;
   }
 
   .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
-      pointer-events: none; /* Allows interaction with the video */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adjust opacity here */
+    pointer-events: none;
+    /* Allows interaction with the video */
   }
 </style>
 
 
 
 <header>
-<!-- Video Section without Carousel Movement -->
-<div id="videoCarousel" class="carousel">
+  <!-- Video Section without Carousel Movement -->
+  <div id="videoCarousel" class="carousel">
     <div class="carousel-inner">
-        <!-- Single Video Item -->
-        <div class="carousel-item active">
-            <video class="d-block w-100" autoplay muted>
-                <source src="{% static 'vidio/vidio.mp4' %}" type="video/mp4">
-            </video>
-            <div class="video-overlay"></div>
-        </div>
+      <!-- Single Video Item -->
+      <div class="carousel-item active">
+        <video class="d-block w-100" autoplay muted>
+          <source src="{% static 'vidio/vidio.mp4' %}" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
     </div>
-</div>
+  </div>
 
 
   <!-- nis navbar -->
@@ -46,9 +48,8 @@
         <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'image/logo.png '%}" alt="logo"
             style="width:80px;height: 80px;"></a>
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,12 +63,15 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'contactpage' %}">Contact</a>
           </li>
-       
+
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary"  type="submit">Search</button>
+        <form id="searchForm" class="d-flex" role="search" action="{% url 'search' %}" method="get">
+          <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
         </form>
+        <div id="searchResults"></div>
       </div>
     </div>
   </nav>
@@ -79,14 +83,19 @@
 <!-- Card Section -->
 <section id="historia-jone" class="section_kat" style="padding: 50px 0; background-color: #fff;">
   <div class="container">
-      <div class="row">
-          <div class="col-sm-12 col-md-6 col-mt-5 col-lg-5 d-flex justify-content-center align-items-center">
-              <h3 class="display-4 fw-bold text-sm-start text-md-end">Historia Jonë</h3>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-6 offset-lg-1 text-start">
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel voluptates quas, quod minima in, distinctio animi ipsa doloribus hic, unde repellat. Commodi perferendis, facere sapiente nulla iure excepturi natus iste?</p>
-          </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-mt-5 col-lg-5 d-flex justify-content-center align-items-center">
+        <h3 class="display-4 fw-bold text-sm-start text-md-end">Historia Jonë</h3>
       </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 offset-lg-1 text-start">
+        <p>Dyqani ynë ka një histori të bukur dhe plot suksese, duke e nisur këtë udhëtim 12 vjet më parë në qytetin e
+          Roskovecit. Me kalimin e viteve, me pasion dhe punë të palodhur, arritëm të hapim dy filialet e tjera, duke i
+          dhënë mundësi më shumë njerëzve të shijojnë produkte cilësore për veshje dhe këpucë. Tashmë, dyqani ynë ka
+          krijuar një lidhje të fortë me komunitetin, jo vetëm në Roskovec, por edhe në Fier dhe më gjerë, duke ofruar
+          gjithmonë shërbim të shkëlqyer dhe produkte moderne që i përgjigjen nevojave të të gjithëve.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -94,14 +103,22 @@
 
 <section id="misioni-yne" class="section_kat" style="padding: 50px 0; background-color: #e9ecef;">
   <div class="container">
-      <div class="row">
-          <div class="col-sm-12 col-md-6 order-md-2 offset-lg-1 col-lg-5">
-              <h3 class="display-4 fw-bold text-start">Misioni Ynë</h3>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-6 order-sm-2 order-md-1 text-start">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nihil, accusamus error natus dolorem, dolore cum accusantium atque expedita soluta reiciendis consequatur nisi exercitationem. Aperiam praesentium expedita blanditiis perferendis totam?</p>
-          </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 order-md-2 offset-lg-1 col-lg-5">
+        <h3 class="display-4 fw-bold text-start">Misioni Ynë</h3>
       </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 order-sm-2 order-md-1 text-start">
+        <p>Motivimi ynë ka lindur nga pasioni për të krijuar diçka të bukur dhe të vlefshme për komunitetin. Çdo hap që
+          kemi hedhur gjatë këtyre 12 viteve është udhëhequr nga dëshira për të ofruar më të mirën, për të krijuar një
+          hapësirë ku njerëzit mund të gjejnë stilin e tyre dhe të ndihen të veçantë. Ky udhëtim ka qenë një sfidë, por
+          gjithmonë kemi besuar se puna e palodhur, angazhimi dhe dashuria për atë që bëjmë, mund të sjellin sukses.
+          Motivimi ynë është të ofrojmë mundësi për çdo individ që të shprehë personalitetin dhe stilin e tij përmes
+          veshjeve dhe këpucëve cilësore. Ne besojmë se çdo person meritojnë të ndihet i veçantë dhe i sigurt në atë që
+          vesh, ndaj përpiqemi çdo ditë të sjellim produkte që përmbushin nevojat dhe preferencat e secilit. Çdo hap që
+          hedhim është për të ndihmuar dhe mbështetur klientët tanë, duke ofruar një shërbim të shkëlqyer dhe një
+          përvojë të paharrueshme blerjeje.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -110,5 +127,3 @@
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
-
-

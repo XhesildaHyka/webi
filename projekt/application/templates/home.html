@@ -8,9 +8,32 @@
 
 
 <body>
+  
+  <style>
+    /* Ensure the navbar is above other content */
+    .navbar {
+      position: relative;
+      z-index: 1000;  /* Make sure navbar stays above the carousel */
+    }
+  
+    /* Carousel's z-index set to a lower value */
+    #carouselExampleCaptions {
+      z-index: 1;
+    }
+
+    .search-button {
+       position: absolute; /* Pozicionohet jashtë rrjedhës së carousel-it */
+       top: 10px;
+       left: 10px; 
+      }
+   
+
+  </style>
+
+
   <header class="position-relative w-100">
     <!-- nis carousel -->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
       <!-- Carousel Indicators -->
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -23,18 +46,19 @@
 
       <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
+          
           <div class="carousel-item active">
             <div class="d-flex justify-content-center">
-              <img src="{% static 'image/IMG-20250102-WA0028.jpg' %}" class="d-block w-100" alt="Photo 1">
-              <img src="{% static 'image/IMG-20250102-WA0030.jpg' %}" class="d-block w-100" alt="Photo 2">
-              <img src="{% static 'image/IMG-20250102-WA0029.jpg' %}" class="d-block w-100" alt="Photo 3">
+              <img src="{% static 'image/IMG-20250102-WA0028.jpg' %}" class="d-block w-100" alt="Photo 4">
+              <img src="{% static 'image/IMG-20250102-WA0029.jpg' %}" class="d-block w-100" alt="Photo 5">
+              <img src="{% static 'image/IMG-20250102-WA0030.jpg' %}" class="d-block w-100" alt="Photo 6">
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item ">
             <div class="d-flex justify-content-center">
-              <img src="{% static 'image/IMG-20250102-WA0031.jpg' %}" class="d-block w-100" alt="Photo 4">
-              <img src="{% static 'image/IMG-20250102-WA0033.jpg' %}" class="d-block w-100" alt="Photo 5">
-              <img src="{% static 'image/IMG-20250102-WA0032.jpg' %}" class="d-block w-100" alt="Photo 6">
+              <img src="{% static 'image/IMG-20250102-WA0031.jpg' %}" class="d-block w-100" alt="Photo 1">
+              <img src="{% static 'image/IMG-20250102-WA0032.jpg' %}" class="d-block w-100" alt="Photo 2">
+              <img src="{% static 'image/IMG-20250102-WA0033.jpg' %}" class="d-block w-100" alt="Photo 3">
             </div>
           </div>
           <div class="carousel-item">
@@ -85,10 +109,14 @@
             </li>
          
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary"  type="submit">Search</button>
+          <form id="searchForm" class="d-flex" role="search" action="{% url 'search' %}" method="get">
+            <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
           </form>
+          <div id="searchResults"></div>
+          
         </div>
       </div>
     </nav>
@@ -160,13 +188,13 @@
           </div>
         </div>
   
-        {% for arrival in arrivals %}
+{% for arrival in arrivals %}
         <div class="col-12 col-md-2 col-lg-3 d-flex">
           <div class="card flex-fill">
-            <img src="{{arrival.arrival_image.url}}" class="card-img-top" alt="{{arrival.arrival_title}}">
+            <img src="{{arrival.arrival_image.url}}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">{{arrival.arrival_title}}</h5>
-              <a href="{% url 'detailspage' arrival.pk %}" class="ngjyra btn mt-auto">POROSIT KËTU</a>
+              <a href="{% url 'arrivalpage' arrival.pk %}" class="ngjyra btn mt-auto">SHIKO KËTU</a>
             </div>
           </div>
         </div>
@@ -177,6 +205,17 @@
   
 
 
+  
+  
+  <script>
+    document.querySelector('#searchForm button').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default button action to handle manually
+      const query = document.querySelector('input[name="search"]').value; // Get the search query
+      window.location.href = `{% url 'search' %}?search=${query}`;  // Redirect to the search results page
+    });
+  </script>
+  
+  
 
 {% endblock %}
 
