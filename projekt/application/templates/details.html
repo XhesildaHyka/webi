@@ -4,25 +4,30 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
+
 {% block content %}
 <html lang="en">
-
-<h1>Detail</h1>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <img src="{{detailsItem.product_image.url}}" alt="" class="img-fluid">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-lg rounded-4">
+          <div class="row no-gutters">
+            <!-- Left side (Image) -->
+            <div class="col-12 col-md-6">
+              <img src="{{detailItem.product_image.url}}" alt="" class="img-fluid rounded-left small-image">
+            </div>
+            <!-- Right side (Text content) -->
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-between p-3">
+              <h2 class="card-title text-dark">{{detailItem.product_title}}</h2>
+              <p class="text-muted mb-4">{{detailItem.product_description}}</p>
+              <p class="text-center"><strong>{{detailItem.product_price}} ALL</strong></p>
+              <div class="text-center mt-3">
+                <a href="#" class="btn btn-primary btn-lg"> PËRFUNDO POROSINË</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col">
-            <h2>{{detailsItem.product_title}}</h2>
-            <p>{{detailsItem.product_description}}</p>
-            <p>{{detailsItem.product_price}}</p>
-        </div>
+      </div>
     </div>
-
-</div>
-
-
-
-
+  </div>
 {% endblock %}

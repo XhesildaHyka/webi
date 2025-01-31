@@ -6,7 +6,33 @@
 {% endblock %}
 {% block content %}
 
+<style>
+  body {
+      background-color: #f4f4f4; /* Ngjyrë e lehtë për sfondin */
+      font-family: 'Arial', sans-serif; /* Font standard */
+      margin: 0;
+      padding: 0;
+  }
 
+  h1 {
+      color:black; 
+      text-align: center; /* Qendërzimi i titullit */
+      font-size: 4rem; /* Madhësia e tekstit */
+      margin-top: 20px;
+      font-family: Copperplate Gothic Light;
+  }
+  h5{
+    font-family: Copperplate Gothic Light;
+    text-align: 2rem;
+  }
+
+  p {
+      color: black; /* Ngjyrë gri e errët për tekstin */
+      font-size: 1.2rem; /* Madhësia e tekstit */
+      margin: 20px; 
+      font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
 <h1>{{categorys.category_title}}</h1>
 <div class="container">
     <div class="row">
@@ -15,18 +41,24 @@
         <div class="col-12 col-md-2 col-lg-4 d-flex">
           <div class="card flex-fill">
             <img src="{{product.product_image.url}}" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{product.product_title}}</h5>
-              <p>{{product.product_description}}</p>
-                <p>{{product.product_price}}</p>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title">{{product.product_title}}</h5>
+                <p>{{product.product_description}}</p>
+              </div>
+              <div class="mt-auto">
+                <p class="mb-2"><strong>{{product.product_price}} ALL</strong></p>
+                <a href="{% url 'detailspage' product.pk %}" class="btn btn-secondary w-100">POROSIT KËTU</a>
 
-              <a href="{% url 'detailspage' product.pk %}" class="ngjyra" class="btn mt-auto">POROSIT KËTU</a>
+
+              </div>
             </div>
           </div>
         </div>
+
         {% endfor %}
-   
     </div>
 </div>
+
 
 {% endblock %}

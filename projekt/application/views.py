@@ -5,10 +5,12 @@ def home(request):
     categorys = Category.objects.all()
     items = Item.objects.all()
     arrivals = Arrival.objects.all()
+    detailItem = Product.objects.all()
     context = {
         "categorys": categorys,
+        "detailItem": detailItem,
         "items": items,
-        "arrivals": arrivals
+        "arrivals": arrivals,
     }
     return render(request, 'home.html', context)
 
@@ -32,7 +34,8 @@ def details(request, id ):
 def kategori(request, id):
     categorys=Category.objects.get(pk=id)
     items=Product.objects.filter(product_category=categorys)
-    context={"categorys": categorys,"items": items}
+    
+    context={"categorys": categorys,"items": items,}
     return render(request, 'kategori.html',context)
 
 def item(request, id):
@@ -42,6 +45,18 @@ def item(request, id):
     return render(request, 'item.html',context)
 
 def arrival(request, id):
-    arrivals=Arrival.objects.get(pk=id)
-    context={"arrivals": arrivals}
-    return render(request, 'arrival.html',context)
+    arrivals = Arrival.objects.get(pk=id)  
+    reja = Product.objects.filter(product_arrival=arrivals)
+    context = {"arrivals": arrivals, "reja": reja} 
+    return render(request, 'arrival.html', context)
+
+
+
+def search(request):
+    if request.method == "GET":
+        search = request.GET.get("search")
+        if search:
+            posts = Product.objects.filter(product_title__icontains=search)
+        else:
+            posts = Product.objects.all()  # Show all products if no search term
+        return render(request, 'search.html', {"posts": posts})

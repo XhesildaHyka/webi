@@ -32,6 +32,9 @@ class Product(models.Model):
     product_new = models.BooleanField(default=False)
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     product_item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True, blank=True)
+    product_arrival = models.ForeignKey(Arrival, on_delete=models.CASCADE, null=True, blank=True)
+    
+  
 
     def __str__(self):
         return f"{self.product_title}"

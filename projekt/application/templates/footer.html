@@ -1,30 +1,48 @@
-  {%load static%}
-  
-  <!-- footer -->
-  <main>
-    <section class="container-fluid my-5">
-        <div class="row border bg-light p-4 rounded">
-            <!-- Logo -->
-            <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
-                <img src="{% static 'image/brand.png' %}" alt="" style="width:150px;height:150px;">
+{% load static %}
+
+<!-- Footer -->
+<footer class="text-dark py-4" style="background-color: rgb(252, 247, 248);">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Logo Section -->
+            <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                <img src="{% static 'image/brand.png' %}" alt="Brand Logo" class="img-fluid rounded-circle" style="width: 120px; height: auto;">
             </div>
 
-            <!-- Map -->
-            <div class="col-12 col-md-6 ps-0">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188.9728334368218!2d19.556806127211445!3d40.727584256182716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1345539971452f97%3A0x8dfc00ef6857ef3a!2sFirma%20Hyka!5e0!3m2!1sen!2s!4v1734361261144!5m2!1sen!2s"
-                    width="100%" height="200px" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Address Section -->
+            <div class="col-12 col-md-5 text-center text-md-start">
+                <h5 class="mb-3"><i class="fa-solid fa-map-marker-alt text-danger"></i> Our Locations</h5>
+                <p class="mb-1"><i class="fa-solid fa-location-dot text-danger"></i> <a href="https://maps.app.goo.gl/dB78hXY1xP1aN97q9" class="text-dark text-decoration-none">Rruga "Jakov Mile", Fier</a></p>
+                <p class="mb-1"><i class="fa-solid fa-location-dot text-danger"></i> <a href="https://maps.app.goo.gl/Etk198oJebivkFc3A" class="text-dark text-decoration-none">Rruga "Xoxi Andoni", Fier</a></p>
+                <p class="mb-1"><i class="fa-solid fa-location-dot text-danger"></i> <a href="https://maps.app.goo.gl/j5S1ergXnndoTSgq8" class="text-dark text-decoration-none">Sh8 km 18, Roskovec 9302</a></p>
             </div>
 
-            <!-- Contact Links -->
-            <div class="col-12 col-md-2 d-flex flex-column justify-content-center">
-                <p><a href="" class="text-decoration-none"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
-                <p><a href="" class="text-decoration-none"><i class="fa-brands fa-facebook"></i> Facebook</a></p>
-                <p><a href="" class="text-decoration-none"><i class="fa-solid fa-phone"></i> Phone</a></p>
-                <p><a href="" class="text-decoration-none"><i class="fa-brands fa-tiktok"></i> Tiktok</a></p>
-                <p><a href="" class="text-decoration-none"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></p>
+            <!-- Social Links Section -->
+            <div class="col-12 col-md-4 text-center text-md-start">
+                <h5 class="mb-3"><i class="fa-solid fa-share-nodes text-primary"></i> Connect With Us</h5>
+                <p class="mb-1">
+                    <a href="https://www.instagram.com/hyka.outlet/" target="_blank" class="text-decoration-none text-dark">
+                        <i class="fa-brands fa-instagram text-danger"></i> Instagram
+                    </a>
+                </p>
+                <p class="mb-1">
+                    <a href="https://www.facebook.com/HykaOutlet/" target="_blank" class="text-decoration-none text-dark">
+                        <i class="fa-brands fa-facebook text-primary"></i> Facebook
+                    </a>
+                </p>
+                <p class="mb-1">
+                    <a href="https://www.tiktok.com/@xhes122/" target="_blank" class="text-decoration-none text-dark">
+                        <i class="fa-brands fa-tiktok"></i> TikTok
+                    </a>
+                </p>
+                <p class="mb-1">
+                    <a href="https://wa.me/+355683102476/" target="_blank" class="text-decoration-none text-dark">
+                        <i class="fa-brands fa-whatsapp text-success"></i> WhatsApp
+                    </a>
+                </p>
             </div>
         </div>
-    </section>
-</main>
+        <hr class="my-4 border-dark">
+        <p class="text-center small mb-0 text-dark">© 2025 Firma Hyka. All Rights Reserved.</p>
+    </div>
+</footer>
