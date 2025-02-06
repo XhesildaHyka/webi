@@ -34,7 +34,6 @@ def details(request, id ):
 def kategori(request, id):
     categorys=Category.objects.get(pk=id)
     items=Product.objects.filter(product_category=categorys)
-    
     context={"categorys": categorys,"items": items,}
     return render(request, 'kategori.html',context)
 
